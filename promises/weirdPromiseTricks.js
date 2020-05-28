@@ -14,4 +14,4 @@ Promise.resolve({
     then: () => {
 	console.log("Thing with a then!");
     }
-}) // strange behavior if the returend object has a 'then' function
+}) // strange behavior if the returned object has a 'then' function
