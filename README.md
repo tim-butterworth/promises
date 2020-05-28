@@ -9,13 +9,12 @@
 - a strange little javascript object with a 'then' and 'catch' functions
 - a pipe
 - a container
-- a way of taming callbacks
+- a way to tame callbacks
 - a way to sequence asynchronous actions
 - something to do some weird tricks with
 - almost a monad
 
 ### What is Async Await?
 
-- lies
-- no one wants it
-- secretly promises
+- lies (secretly promises)
+- interesting interactions with loops

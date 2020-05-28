@@ -12,7 +12,9 @@ new Promise((resolve, reject) => resolve(100)) // don't worry about the reject j
 	console.log(v);
     })
 
-// is that better than?
+
+
+// does that beat this?
 let v = 100;
 v = v + 33;
 v = v -3;

@@ -37,7 +37,11 @@ new Promise((resolve, reject) => resolve(17))
 
 // And then something weird happens (but super important)
 // Except if that thing is a promise, promises get 'flattened'
-Promise.resolve(Promise.resolve(Promise.resolve(10))).then(console.log);
+Promise.resolve(
+    Promise.resolve(
+	Promise.resolve(10)
+    )
+).then(console.log);
 
 // A promise returned by a 'then' also gets 'flattened'
 Promise.resolve(10)
