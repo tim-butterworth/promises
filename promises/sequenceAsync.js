@@ -1,35 +1,60 @@
-// setTimeout
-const delay = 2000;
-setTimeout(
+// Some of the functions in this file will only work in a browser and not in node (they use some browser only apis)
+
+// setTimeout + clearTimeout
+const setTimeoutExample = () => {
+    const delay = 2000;
+    setTimeout(
+	() => {
+	    console.log(`executed after ${delay} milliseconds`);
+	},
+	2000
+    );
+}
+const timeoutId = setTimeout(
     () => {
-	console.log(`executed after ${delay} milliseconds`);
+	console.log("Did not clear fast enough!");
     },
-    2000
+    10000
 );
+clearTimeout(timeoutId);
 
-// setInterval
-let count = 0;
-const intervalId = setInterval(
-    () => {
-	if (count > 10) {
-	    console.log(`Last time, clearing interval`);
+// setInterval + clearInterval
+const intervalExample = () => {
+    let count = 0;
+    const intervalId = setInterval(
+	() => {
+	    console.log(`Repeats ${count}`);
+	    count++;
+	},
+	500
+    );
 
-	    clearInterval(intervalId);
-	} else {
-	    console.log(`Count is ${count}`);
-	}
-	count++;
-    },
-    1000
-)
+    return intervalId;
+}
 
+const selfClearingExample = () => {
+    let count = 0;
+    const intervalId = setInterval(
+	() => {
+	    if (count > 10) {
+		console.log(`Last time, clearing interval`);
 
-//Promises are always async... at least the 'then' call is
-new Promise((resolve, reject) => resolve("hi from a promise!")).then(console.log);
-console.log("hi from not the promise");
+		clearInterval(intervalId);
+	    } else {
+		console.log(`Count is ${count}`);
+	    }
+	    count++;
+	},
+	1000
+    )
+}
 
-//Promises are implemented natively but can be totally implemented in vanilla js, 'then' being async is not required... just some trivia. This does mean, reasoning about the relative execution order of promises and non-promises can be tricky
+// One line arrow functions
+const fullFormExample = () => {
+    return 10;
+}
 
+const compactFormExample = () => 10;
 
 // A few fancy things that can be done with promises
 const waitForElement = (selector, timeout = 5000) => {

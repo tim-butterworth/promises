@@ -20,4 +20,5 @@
 - [lies (secretly promises)](asyncAwait/secretlyPromises.js)
 - [interesting interactions with loops](asyncAwait/loopInteractions.js)
 - [do we even need them?](asyncAwait/evenNeeded.js)
+- [not a promise replacement](asyncAwait/notThatPowerful.js)
 - [something to do some weird trickes with](asyncAwait/weirdTricks.js)

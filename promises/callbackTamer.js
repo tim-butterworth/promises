@@ -33,7 +33,7 @@ const callApp3 = (app2Data, callback) => {
     }, 1000);
 }
 
-callApp1((app1Data) => {
+const callbackVersion = () => callApp1((app1Data) => {
     callApp2(app1Data, (app2Data) => {
 	callApp3(app2Data, (app3Data) => {
 	    console.log("App3Data", app3Data);
@@ -42,10 +42,12 @@ callApp1((app1Data) => {
 })
 
 //still kind of rough...
-new Promise((resolve, reject) => callApp1(resolve))
-    .then((app1Data) => new Promise((resolve, reject) => callApp2(app1Data, resolve)))
-    .then((app2Data) => new Promise((resolve, reject) => callApp3(app2Data, resolve)))
-    .then((app3Data) => console.log(app3Data))
+const complexPromiseVersion = () => {
+    new Promise((resolve, reject) => callApp1(resolve))
+	.then((app1Data) => new Promise((resolve, reject) => callApp2(app1Data, resolve)))
+	.then((app2Data) => new Promise((resolve, reject) => callApp3(app2Data, resolve)))
+	.then((app3Data) => console.log(app3Data))
+}
 
 // generally functions can be rewritten to better take advantage of promises
 // in the functions above, the callbacks are all about what to do next but we can rewrite the functions so that they no longer care about what to do next
@@ -60,3 +62,35 @@ const promiseCallApp2 = (app1Data) => {
 const promiseCallApp3 = (app2Data) => {
     return new Promise((resolve, reject) => callApp3(app2Data, resolve))
 }
+
+const simplePromiseVersion = () => {
+    Promise.resolve(promiseCallApp1())
+	.then(promiseCallApp2)
+	.then(promiseCallApp3)
+}
+
+module.exports = {
+    callApp1,
+    callApp2,
+    callApp3,
+    promiseCallApp1,
+    promiseCallApp2,
+    promiseCallApp3,
+    callbackVersion,
+    complexPromiseVersion,
+    simplePromiseVersion
+}
+
+/*
+const {
+    callApp1,
+    callApp2,
+    callApp3,
+    promiseCallApp1,
+    promiseCallApp2,
+    promiseCallApp3,
+    callbackVersion,
+    complexPromiseVersion,
+    simplePromiseVersion
+} = require("./promises/callbackTamer")
+*/

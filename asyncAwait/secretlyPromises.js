@@ -1,20 +1,17 @@
 const simpleAsync = async () => {
     return 10;
 }
-
 console.log(simpleAsync());
 
 const simpleAwait = async () => {
     return await 10;
 }
-
 console.log(simpleAwait());
 simpleAwait().then(console.log);
 
 const simplePromiseAsync = async () => {
     return Promise.resolve(10);
 }
-
 console.log(simplePromiseAsync());
 
 const simplePromiseAsyncAwait = async () => {
@@ -22,7 +19,6 @@ const simplePromiseAsyncAwait = async () => {
 
     return v * 17;
 }
-
 console.log(simplePromiseAsyncAwait());
 
 const fullOnFancy = async () => {
@@ -30,7 +26,6 @@ const fullOnFancy = async () => {
 
     return v * 7;
 }
-
 console.log(fullOnFancy());
 fullOnFancy().next(console.log);
 
