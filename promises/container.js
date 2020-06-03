@@ -9,8 +9,8 @@ const thenAddNinty = (p) => {
 // Promises can be passed around and additional 'thens' can be attached willy nilly
 let chainedPromise = new Promise((resolve, reject) => resolve(100));
 
-chainedPromise = thenAddSeven(promise);
-chainedPromise = thenAddNinty(promise);
+chainedPromise = thenAddSeven(chainedPromise);
+chainedPromise = thenAddNinty(chainedPromise);
 
 chainedPromise.then(console.log);
 
